@@ -1,13 +1,13 @@
 import type { Aisle, ShoppingItem } from "./types";
 
 // ============================================================
-// Popote — Persistance des favoris (localStorage).
+// Bousti — Persistance des favoris (localStorage).
 // Types + helpers purs. Le state réactif vit dans
 // components/FavoritesProvider.tsx. Migrable vers Supabase.
 // ============================================================
 
-const LIKES_KEY = "popote.likes.v1";
-const BASKETS_KEY = "popote.baskets.v1";
+const LIKES_KEY = "bousti.likes.v1";
+const BASKETS_KEY = "bousti.baskets.v1";
 
 /** id de recette -> timestamp du like */
 export type Likes = Record<string, number>;

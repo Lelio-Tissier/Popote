@@ -2,7 +2,7 @@ import { SIGNED_RECIPES } from "./recipes";
 import type { Recipe } from "./types";
 
 // ============================================================
-// Popote — Une VRAIE photo UNIQUE par recette (zéro doublon).
+// Bousti — Une VRAIE photo UNIQUE par recette (zéro doublon).
 // Chaque recette signée reçoit une photo réelle de plat :
 // exacte pour les plats identifiés, au plus proche réel sinon.
 // L'unicité est GARANTIE par le code (voir buildAssignments) :

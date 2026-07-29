@@ -2,7 +2,7 @@ import { AISLE_ORDER } from "./constants";
 import type { Aisle, ShoppingItem } from "./types";
 
 // ============================================================
-// Popote — Drives des enseignes.
+// Bousti — Drives des enseignes.
 // ⚠️ Aucune enseigne n'expose d'API publique pour remplir le
 // panier : "connexion Drive" = envoi ASSISTÉ (on copie la liste
 // et on ouvre le Drive du magasin). L'intégration automatique
@@ -85,7 +85,7 @@ export const DRIVES: Drive[] = [
 
 /** Texte de la liste de courses, groupé par rayon (pour copier/coller). */
 export function shoppingListText(grouped: Record<Aisle, ShoppingItem[]>): string {
-  const lines = ["🍲 Ma liste de courses Popote", ""];
+  const lines = ["🍲 Ma liste de courses Bousti", ""];
   for (const { aisle, emoji } of AISLE_ORDER) {
     const items = grouped[aisle];
     if (!items || items.length === 0) continue;
@@ -110,9 +110,9 @@ export function shoppingItemNames(
 export type MatchStatus = "matched" | "manual";
 
 export interface DriveProduct {
-  name: string; // libellé ingrédient Popote
+  name: string; // libellé ingrédient Bousti
   displayQty: string; // quantité (ex. "400 g")
-  estimatedPrice: number; // prix estimé (calcul Popote)
+  estimatedPrice: number; // prix estimé (calcul Bousti)
   query: string; // requête de recherche chez l'enseigne
   status: MatchStatus; // matched auto / à valider manuellement
 }
@@ -121,7 +121,7 @@ export interface DriveProduct {
  * Matching ingrédient -> "produit" enseigne.
  * NB : sans API catalogue officielle, on ne peut pas résoudre une vraie
  * référence produit. On prépare donc une requête de recherche + le prix
- * estimé Popote. Le jour d'un partenariat/API, `resolveRef()` remplacera
+ * estimé Bousti. Le jour d'un partenariat/API, `resolveRef()` remplacera
  * ce heuristique par une vraie correspondance SKU.
  */
 export function matchProducts(

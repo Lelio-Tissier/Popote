@@ -2,7 +2,7 @@ import type { Recipe } from "./types";
 import { EXTRA_RECIPES } from "./recipes-extra";
 
 // ============================================================
-// Popote — Base de recettes curées (écrites par des humains)
+// Bousti — Base de recettes curées (écrites par des humains)
 // Prix : € par unité de base (g, ml, pièce). Visée : 1–5 €/pers.
 // NB : catalogue = 79 recettes signées, CHACUNE avec sa photo unique
 // (voir lib/photos.ts). Les recettes générées par modèles ont été
@@ -900,7 +900,7 @@ const CORE_RECIPES: Recipe[] = [
   },
 ];
 
-// Recettes "fait maison" signées (cœur éditorial de Popote).
+// Recettes "fait maison" signées (cœur éditorial de Bousti).
 export const SIGNED_RECIPES: Recipe[] = [...CORE_RECIPES, ...EXTRA_RECIPES];
 
 // Catalogue = uniquement les recettes signées, chacune avec sa photo unique.

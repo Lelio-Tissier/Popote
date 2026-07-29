@@ -39,7 +39,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 function exportList(grouped: Record<Aisle, ShoppingItem[]>) {
-  const lines = ["🍲 Ma liste de courses Popote", ""];
+  const lines = ["🍲 Ma liste de courses Bousti", ""];
   for (const { aisle, emoji } of AISLE_ORDER) {
     const items = grouped[aisle];
     if (!items || items.length === 0) continue;
@@ -53,7 +53,7 @@ function exportList(grouped: Record<Aisle, ShoppingItem[]>) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "liste-popote.txt";
+  a.download = "liste-bousti.txt";
   a.click();
   URL.revokeObjectURL(url);
 }

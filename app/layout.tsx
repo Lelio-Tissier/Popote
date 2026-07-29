@@ -3,9 +3,9 @@ import "./globals.css";
 import { FavoritesProvider } from "@/components/FavoritesProvider";
 
 export const metadata: Metadata = {
-  title: "Popote — Ton menu & tes courses, calés sur ton budget",
+  title: "Bousti — Ton menu & tes courses, calés sur ton budget",
   description:
-    "Popote génère un menu maison personnalisé et ta liste de courses triée par rayon, dans ton budget. 100 % gratuit, fait maison, anti-gaspi, Bio & local.",
+    "Bousti génère un menu maison personnalisé et ta liste de courses triée par rayon, dans ton budget. 100 % gratuit, fait maison, anti-gaspi, Bio & local.",
 };
 
 export const viewport: Viewport = {

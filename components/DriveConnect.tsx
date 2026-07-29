@@ -102,7 +102,7 @@ export function DriveConnect({
                 ))}
               </div>
               <p className="mt-4 rounded-2xl bg-sage-light/60 px-4 py-3 text-xs text-sage">
-                ℹ️ Les enseignes n'ouvrent pas leur panier aux applis tierces. Popote
+                ℹ️ Les enseignes n'ouvrent pas leur panier aux applis tierces. Bousti
                 prépare ta liste et t'ouvre le Drive : tu la retrouves prête à
                 rechercher. L'ajout 100 % automatique nécessitera un partenariat
                 avec l'enseigne.

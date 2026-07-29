@@ -1,7 +1,7 @@
 import type { Ingredient, Nutrition, Recipe } from "./types";
 
 // ============================================================
-// Popote — Table nutritionnelle (valeurs indicatives).
+// Bousti — Table nutritionnelle (valeurs indicatives).
 // k=kcal, p=protéines, c=glucides, f=lipides — POUR 100 g / 100 ml.
 // `piece` = poids moyen (g) d'une pièce quand l'unité est "pièce".
 // Source : moyennes usuelles (type Ciqual/USDA), arrondies.

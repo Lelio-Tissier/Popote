@@ -1,9 +1,9 @@
 import type { Recipe } from "./types";
 
 // ============================================================
-// Popote — Lot étendu de recettes ORIGINALES (rédigées maison).
+// Bousti — Lot étendu de recettes ORIGINALES (rédigées maison).
 // Les plats sont des classiques du domaine public ; les textes,
-// quantités et prix sont écrits pour Popote. Chaque recette est
+// quantités et prix sont écrits pour Bousti. Chaque recette est
 // signée d'un prénom de cuisinier. Prix : € par unité de base.
 // ============================================================
 

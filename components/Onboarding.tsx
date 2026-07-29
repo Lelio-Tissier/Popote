@@ -53,7 +53,7 @@ export function Onboarding({
       {/* En-tête marque */}
       <header className="mb-6 text-center">
         <div className="text-4xl">🍲</div>
-        <h1 className="mt-2 text-3xl text-sage">Popote</h1>
+        <h1 className="mt-2 text-3xl text-sage">Bousti</h1>
         <p className="mx-auto mt-1 max-w-xs text-sm text-anthracite/60">
           Ton menu maison et ta liste de courses, calés sur ton budget. Gratuit,
           anti-gaspi, Bio & local.

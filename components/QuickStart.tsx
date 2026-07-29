@@ -21,7 +21,7 @@ export function QuickStart({
     <div className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-4 pb-28 pt-10">
       <header className="mb-8 text-center">
         <div className="text-5xl">🍲</div>
-        <h1 className="mt-3 text-4xl text-sage">Popote</h1>
+        <h1 className="mt-3 text-4xl text-sage">Bousti</h1>
         <p className="mx-auto mt-2 max-w-xs text-anthracite/60">
           Ton menu maison + ta liste de courses, dans ton budget. Deux réponses
           suffisent pour commencer.

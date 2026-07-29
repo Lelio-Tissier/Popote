@@ -9,7 +9,7 @@ import type {
 } from "./types";
 
 // ============================================================
-// Popote — Générateur de recettes par MODÈLES.
+// Bousti — Générateur de recettes par MODÈLES.
 // ⚠️ Ces recettes sont composées automatiquement à partir de
 // briques cohérentes (protéine × méthode × accompagnement, etc.)
 // pour garantir >100 plats par moment. Elles complètent les

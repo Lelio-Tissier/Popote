@@ -1,8 +1,8 @@
-# 🍲 Popote
+# 🍲 Bousti
 
 App mobile-first de planification de repas & de courses. L'utilisateur renseigne
 ses préférences (moments, budget, régime, allergies, matériel, magasin, envies)
-et Popote génère instantanément un **menu maison personnalisé** + une **liste de
+et Bousti génère instantanément un **menu maison personnalisé** + une **liste de
 courses triée par rayon**, calée sur son budget.
 
 - 100 % gratuit pour l'utilisateur, ambiance « fait maison ».
@@ -33,7 +33,7 @@ npm run dev                                        # http://localhost:3000
 
 ```
 app/
-  globals.css      # design system Popote (couleurs, rayons, ombres)
+  globals.css      # design system Bousti (couleurs, rayons, ombres)
   layout.tsx       # métadonnées, langue fr, fond crème
   page.tsx         # flow : onboarding <-> résultat (état client)
 components/

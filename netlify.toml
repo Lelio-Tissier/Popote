@@ -1,0 +1,7 @@
+# Netlify — Popote (export statique Next.js)
+# Si tu connectes ce dépôt GitHub à Netlify, il construira le site avec :
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# Fallback SPA-friendly (au cas où) : 404 géré par Next export.

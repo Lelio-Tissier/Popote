@@ -1,7 +1,10 @@
 # Netlify — Popote (export statique Next.js)
-# Si tu connectes ce dépôt GitHub à Netlify, il construira le site avec :
+# Le site est un export statique : on publie simplement le dossier `out/`
+# et on DÉSACTIVE le runtime Next.js de Netlify (sinon il gère mal l'export
+# et renvoie un 404 à la racine).
 [build]
   command = "npm run build"
   publish = "out"
 
-# Fallback SPA-friendly (au cas où) : 404 géré par Next export.
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"

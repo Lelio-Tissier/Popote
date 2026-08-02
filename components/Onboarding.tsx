@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import {
   ALLERGENS,
@@ -27,6 +28,7 @@ import {
   SectionCard,
   Segmented,
   Stepper,
+  StorePicker,
   Toggle,
 } from "./primitives";
 
@@ -52,8 +54,14 @@ export function Onboarding({
     <div className="mx-auto w-full max-w-xl px-4 pb-32 pt-6">
       {/* En-tête marque */}
       <header className="mb-6 text-center">
-        <div className="text-4xl">🍲</div>
-        <h1 className="mt-2 text-3xl text-sage">Bousti</h1>
+        <Image
+          src="/logo-bousti.png"
+          alt="Bousti"
+          width={180}
+          height={98}
+          priority
+          className="mx-auto h-auto w-[180px]"
+        />
         <p className="mx-auto mt-1 max-w-xs text-sm text-anthracite/60">
           Ton menu maison et ta liste de courses, calés sur ton budget. Gratuit,
           anti-gaspi, Bio & local.
@@ -106,16 +114,12 @@ export function Onboarding({
 
         {/* 3. Magasin & budget */}
         <SectionCard step={3} title="Ton magasin & ton budget">
-          <div className="mb-5 flex flex-wrap gap-2">
-            {STORES.map((s) => (
-              <Chip
-                key={s.id}
-                label={s.name}
-                emoji={s.emoji}
-                selected={p.store === s.id}
-                onClick={() => set("store", s.id)}
-              />
-            ))}
+          <div className="mb-5">
+            <StorePicker
+              options={STORES}
+              value={p.store}
+              onChange={(id) => set("store", id)}
+            />
           </div>
           <RangeSlider
             value={p.budget}

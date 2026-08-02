@@ -109,7 +109,10 @@ export function isVeg(r: Recipe): boolean {
 export interface Store {
   id: string;
   name: string;
-  emoji: string;
+  /** Monogramme affiché dans la pastille de marque (ex. "C", "E.L"). */
+  short: string;
+  /** Couleur de marque (fond de la pastille). */
+  color: string;
   multiplier: number;
 }
 

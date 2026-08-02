@@ -8,3 +8,27 @@
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# ------------------------------------------------------------
+# En-têtes de sécurité HTTP.
+# NB : l'app est un export statique → `headers()` de next.config
+# est ignoré (nécessite un serveur). Netlify applique donc ces
+# en-têtes à la livraison des fichiers de `out/`.
+#
+# CSP : pas de nonce possible sans serveur, et l'hydratation Next
+# en export statique injecte des scripts/styles inline → on autorise
+# 'unsafe-inline'. Le risque XSS reste faible (React échappe tout,
+# aucun dangerouslySetInnerHTML, aucune donnée HTML non fiable).
+# Images : self + data: + TheMealDB (photos de recettes).
+# ------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.themealdb.com; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+    X-DNS-Prefetch-Control = "off"

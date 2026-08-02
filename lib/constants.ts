@@ -21,15 +21,26 @@ export const MOMENTS: { id: Moment; label: string; emoji: string }[] = [
 ];
 
 // ------- Magasins (multiplicateur de prix) -------
+// `short` = monogramme de la pastille, `color` = couleur de marque.
 export const STORES: Store[] = [
-  { id: "carrefour", name: "Carrefour", emoji: "🟦", multiplier: 1.0 },
-  { id: "leclerc", name: "Leclerc", emoji: "🟨", multiplier: 0.9 },
-  { id: "intermarche", name: "Intermarché", emoji: "🟥", multiplier: 0.95 },
-  { id: "auchan", name: "Auchan", emoji: "🟩", multiplier: 0.97 },
-  { id: "lidl", name: "Lidl", emoji: "🟦", multiplier: 0.82 },
-  { id: "monoprix", name: "Monoprix", emoji: "⬛", multiplier: 1.15 },
-  { id: "marche", name: "Marché / Primeur", emoji: "🧺", multiplier: 1.05 },
-  { id: "biocoop", name: "Biocoop", emoji: "🌱", multiplier: 1.3 },
+  { id: "carrefour", name: "Carrefour", short: "C", color: "#004E9F", multiplier: 1.0 },
+  { id: "leclerc", name: "E.Leclerc", short: "E.L", color: "#0055A4", multiplier: 0.9 },
+  { id: "intermarche", name: "Intermarché", short: "Itm", color: "#E2001A", multiplier: 0.95 },
+  { id: "auchan", name: "Auchan", short: "A", color: "#E30613", multiplier: 0.97 },
+  { id: "lidl", name: "Lidl", short: "Li", color: "#0050AA", multiplier: 0.82 },
+  { id: "aldi", name: "Aldi", short: "Al", color: "#002B5C", multiplier: 0.8 },
+  { id: "netto", name: "Netto", short: "N", color: "#FFCB05", multiplier: 0.83 },
+  { id: "coursesu", name: "Super U", short: "U", color: "#E2001A", multiplier: 0.93 },
+  { id: "casino", name: "Casino", short: "Cs", color: "#D4021D", multiplier: 1.08 },
+  { id: "franprix", name: "Franprix", short: "Fp", color: "#8CBE22", multiplier: 1.12 },
+  { id: "cora", name: "Cora", short: "Co", color: "#E2001A", multiplier: 0.98 },
+  { id: "chronodrive", name: "Chronodrive", short: "Ch", color: "#E5007D", multiplier: 0.96 },
+  { id: "grandfrais", name: "Grand Frais", short: "GF", color: "#3E8914", multiplier: 1.02 },
+  { id: "monoprix", name: "Monoprix", short: "M", color: "#1D1D1B", multiplier: 1.15 },
+  { id: "naturalia", name: "Naturalia", short: "Nat", color: "#7AB800", multiplier: 1.28 },
+  { id: "biocoop", name: "Biocoop", short: "Bio", color: "#52A63F", multiplier: 1.3 },
+  { id: "picard", name: "Picard", short: "P", color: "#005AAB", multiplier: 1.2 },
+  { id: "marche", name: "Marché / Primeur", short: "🧺", color: "#B06A2C", multiplier: 1.05 },
 ];
 
 // ------- Matériel -------

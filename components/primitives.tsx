@@ -155,33 +155,42 @@ export function Stepper({
   max,
   onChange,
   suffix,
+  label,
 }: {
   value: number;
   min: number;
   max: number;
   onChange: (v: number) => void;
   suffix?: string;
+  label?: string;
 }) {
   const btn =
     "flex size-11 items-center justify-center rounded-full bg-sage-light text-xl font-extrabold text-sage transition active:scale-90 disabled:opacity-40";
+  const unit = [suffix, label].filter(Boolean).join(" ").trim();
+  const valueText = unit ? `${value} ${unit}` : String(value);
   return (
     <div className="flex items-center gap-4">
       <button
         type="button"
-        aria-label="Diminuer"
+        aria-label={label ? `Diminuer : ${label}` : "Diminuer"}
         className={btn}
         disabled={value <= min}
         onClick={() => onChange(Math.max(min, value - 1))}
       >
         −
       </button>
-      <span className="min-w-16 text-center text-2xl font-extrabold tabular-nums">
+      <span
+        role="status"
+        aria-live="polite"
+        aria-label={valueText}
+        className="min-w-16 text-center text-2xl font-extrabold tabular-nums"
+      >
         {value}
         {suffix && <span className="ml-1 text-sm font-semibold text-anthracite/60">{suffix}</span>}
       </span>
       <button
         type="button"
-        aria-label="Augmenter"
+        aria-label={label ? `Augmenter : ${label}` : "Augmenter"}
         className={btn}
         disabled={value >= max}
         onClick={() => onChange(Math.min(max, value + 1))}
@@ -199,19 +208,21 @@ export function RangeSlider({
   max,
   step = 1,
   onChange,
+  label = "Budget",
 }: {
   value: number;
   min: number;
   max: number;
   step?: number;
   onChange: (v: number) => void;
+  label?: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
   return (
     <div>
       <div className="mb-2 flex items-end justify-between">
         <span className="text-3xl font-extrabold text-sage">{value} €</span>
-        <span className="text-sm text-anthracite/60">
+        <span className="text-sm font-medium text-anthracite/70">
           {min} – {max} €
         </span>
       </div>
@@ -222,11 +233,90 @@ export function RangeSlider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
+        aria-label={label}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-valuetext={`${value} euros`}
         className="h-2 w-full cursor-pointer appearance-none rounded-full outline-none [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-terracotta [&::-webkit-slider-thumb]:shadow-md [&::-moz-range-thumb]:h-6 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-terracotta"
         style={{
           background: `linear-gradient(to right, var(--color-terracotta) ${pct}%, var(--color-line) ${pct}%)`,
         }}
       />
+    </div>
+  );
+}
+
+// ---------------- StorePicker (pastilles de marque) ----------------
+type StoreOption = { id: string; name: string; short: string; color: string };
+
+/** Choisit noir ou blanc selon la luminance de la couleur de marque (lisibilité). */
+function readableOn(hex: string): string {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  // luminance perçue (0–255) ; seuil ~150 → texte foncé sur fonds clairs
+  const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+  return lum > 150 ? "#1D1D1B" : "#ffffff";
+}
+
+export function StorePicker({
+  options,
+  value,
+  onChange,
+}: {
+  options: StoreOption[];
+  value: string;
+  onChange: (id: string) => void;
+}) {
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Choisis ton magasin"
+      className="grid grid-cols-4 gap-2 sm:grid-cols-5"
+    >
+      {options.map((s) => {
+        const selected = s.id === value;
+        return (
+          <button
+            key={s.id}
+            type="button"
+            role="radio"
+            aria-checked={selected}
+            aria-label={s.name}
+            title={s.name}
+            onClick={() => onChange(s.id)}
+            className={[
+              "flex flex-col items-center gap-1.5 rounded-2xl border p-2 transition active:scale-95",
+              selected
+                ? "border-sage bg-sage-light shadow-[var(--shadow-soft)]"
+                : "border-line bg-white hover:border-sage/40",
+            ].join(" ")}
+          >
+            <span
+              aria-hidden
+              className="relative flex size-12 items-center justify-center rounded-2xl text-sm font-extrabold tracking-tight shadow-sm"
+              style={{ backgroundColor: s.color, color: readableOn(s.color) }}
+            >
+              {s.short}
+              {selected && (
+                <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-sage text-[10px] font-black text-white shadow">
+                  ✓
+                </span>
+              )}
+            </span>
+            <span
+              className={[
+                "w-full truncate text-center text-[11px] font-semibold leading-tight",
+                selected ? "text-sage" : "text-anthracite/70",
+              ].join(" ")}
+            >
+              {s.name}
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }

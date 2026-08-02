@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { RangeSlider, Stepper } from "./primitives";
 
@@ -20,8 +21,14 @@ export function QuickStart({
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-4 pb-28 pt-10">
       <header className="mb-8 text-center">
-        <div className="text-5xl">🍲</div>
-        <h1 className="mt-3 text-4xl text-sage">Bousti</h1>
+        <Image
+          src="/logo-bousti.png"
+          alt="Bousti"
+          width={220}
+          height={120}
+          priority
+          className="mx-auto h-auto w-[220px]"
+        />
         <p className="mx-auto mt-2 max-w-xs text-anthracite/60">
           Ton menu maison + ta liste de courses, dans ton budget. Deux réponses
           suffisent pour commencer.
@@ -30,19 +37,33 @@ export function QuickStart({
 
       <div className="space-y-4">
         <section className="rounded-[var(--radius-card)] bg-white p-6 text-center shadow-[var(--shadow-soft)]">
-          <h2 className="mb-4 text-lg">Pour combien de personnes ? 👥</h2>
+          <h2 id="qs-people-label" className="mb-4 text-lg">
+            Pour combien de personnes ? 👥
+          </h2>
           <div className="flex justify-center">
-            <Stepper value={people} min={1} max={10} onChange={setPeople} />
+            <Stepper
+              value={people}
+              min={1}
+              max={10}
+              onChange={setPeople}
+              label="personnes"
+            />
           </div>
         </section>
 
         <section className="rounded-[var(--radius-card)] bg-white p-6 shadow-[var(--shadow-soft)]">
           <h2 className="mb-4 text-center text-lg">Quel budget ? 💶</h2>
-          <RangeSlider value={budget} min={15} max={150} onChange={setBudget} />
+          <RangeSlider
+            value={budget}
+            min={15}
+            max={150}
+            onChange={setBudget}
+            label="Budget en euros"
+          />
         </section>
       </div>
 
-      <p className="mt-6 text-center text-sm text-anthracite/45">
+      <p className="mt-6 text-center text-sm font-medium text-anthracite/70">
         Allergies, régime, magasin favori… tu pourras affiner ensuite.
       </p>
 
@@ -52,6 +73,7 @@ export function QuickStart({
           <button
             type="button"
             onClick={() => onGenerate(people, budget)}
+            aria-label={`Générer mon menu pour ${people} personne${people > 1 ? "s" : ""} avec un budget de ${budget} euros`}
             className="w-full rounded-full bg-terracotta py-4 text-base font-extrabold text-white shadow-[var(--shadow-cta)] transition active:scale-[0.98] hover:bg-terracotta-dark"
           >
             Voir mon menu maintenant 🍲
@@ -59,6 +81,7 @@ export function QuickStart({
           <button
             type="button"
             onClick={() => onRefine(people, budget)}
+            aria-label="Affiner mes préférences : allergies, régime et enseigne"
             className="w-full rounded-full py-2 text-sm font-bold text-sage underline-offset-2 hover:underline"
           >
             Affiner mes préférences d'abord
